@@ -11,6 +11,10 @@ public class Main {
 
         // declare variable to determine if user wants to play again
         boolean playAgain = false;
+        // declare variable to set "the point"
+        int thePoint = 0;
+        // declare variable to sum up subsequent rolls
+        int subsequentCrapsRoll = 0;
 
         do {
             // declare and set up the two dice for rolling
@@ -34,9 +38,39 @@ public class Main {
                 System.out.println("Your sum is: " + crapsRoll);
                 System.out.println("This is a natural! You have won!");
             } else {
-                // for now, fix this, display case iii
+                // set the point at the sum of the dice rolls
+                thePoint = crapsRoll;
+                // print out the roll and indicate that it is point now
                 System.out.println("Your dice rolls were: " + die1 + " and " + die2);
-                System.out.println("Total was: " + crapsRoll);
+                System.out.println("Total was: " + crapsRoll + " and is now the point.");
+                // while loop to keep rolling until win/loss
+                while (subsequentCrapsRoll != thePoint) {
+
+                    // output trying for point
+                    System.out.println("Trying for point.");
+                    // initialize new dice for subsequent rolls
+                    int die3 = rnd.nextInt(6) + 1; // each dice is bounded to a range of 1-6
+                    int die4 = rnd.nextInt(6) + 1;
+
+                    // add up the sum of the new dice rolls
+                    subsequentCrapsRoll = die3 + die4;
+
+                    // output the dice roll and result
+                    System.out.println("Your dice rolls were: " + die3 + " and " + die4);
+                    System.out.println("Total was: " + subsequentCrapsRoll);
+
+                    if (subsequentCrapsRoll == 7) {
+                        // if roll results in 7, display that the user lost
+                        System.out.println("You got a 7 and lost.");
+                        break;
+                    }
+
+                    if (subsequentCrapsRoll == thePoint) {
+                        System.out.println("You made point and won.");
+                        break;
+                    }
+                }
+
             }
 
             // output and ask user if they would want to play again
