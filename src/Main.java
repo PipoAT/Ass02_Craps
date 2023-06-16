@@ -1,4 +1,4 @@
-import java.util.Random;
+import java.util.Random; // import random and scanner for user inputs and random number generation
 import java.util.Scanner;
 
 public class Main {
@@ -60,13 +60,14 @@ public class Main {
                     System.out.println("Total was: " + subsequentCrapsRoll);
 
                     if (subsequentCrapsRoll == 7) {
-                        // if roll results in 7, display that the user lost
+                        // if roll results in 7, display that the user lost and break out of the loop
                         System.out.println("You got a 7 and lost.");
                         break;
                     }
 
                     if (subsequentCrapsRoll == thePoint) {
                         System.out.println("You made point and won.");
+                        // if roll results in the point being made then display that they made point, win, and break out of loop
                         break;
                     }
                 }
@@ -79,12 +80,15 @@ public class Main {
                 System.out.println("Would you like to play again/continue? [Yes/No]: ");
                 String response = userPlaysAgain.nextLine();
                 if (response.equalsIgnoreCase("Yes")) {
+                    // set flags/variables to true to continue the game
                     validResponse = true;
                     playAgain = true;
                 } else if (response.equalsIgnoreCase("No")) {
+                    // set flag/variable to false ot break the loop and end game
                     validResponse = true;
                     playAgain = false;
                 } else {
+                    // if user provides anything that is not yes or no, print invalid response error and rerun
                     System.out.println("You have provided an invalid response. Please enter Yes or No.");
                 }
             } while (!validResponse);
